@@ -1,0 +1,5 @@
+# Full training dependencies. Match JAX/JAXLIB to the intended CPU/GPU setup.
+-r requirements_analysis.txt
+jax
+jaxlib
+scipy

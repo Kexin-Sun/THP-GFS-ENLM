@@ -1,0 +1,283 @@
+{
+  "protocol": "THP-Group1-4F-GFS-optimizer-JS-v3",
+  "method": "4F-GFS-ENGD-FULLJ-EIGH-1e-7",
+  "method_key": "full_eigh1e7",
+  "method_family": "ENGD",
+  "definition": "Every method uses the same four-field GFS outer iteration; only the optimizer/Gram backend differs.",
+  "seed": 12345,
+  "exact_case": "distinct",
+  "physical_parameters": {
+    "nu": 0.3,
+    "a0": 0.2,
+    "b0": 0.1,
+    "c0": 0.2,
+    "kappa": 0.1,
+    "theta": 0.1
+  },
+  "network_sizes": {
+    "u_xi": [
+      3,
+      32,
+      32,
+      3
+    ],
+    "p_T": [
+      3,
+      32,
+      32,
+      2
+    ]
+  },
+  "parameter_counts": {
+    "u_xi": 1283,
+    "p_T": 1250
+  },
+  "sampling": {
+    "PDE": 4096,
+    "U_Dirichlet": 816,
+    "U_Neumann": 816,
+    "PT_Dirichlet": 1632,
+    "initial": 484,
+    "evaluation": 64000
+  },
+  "loss_weighting": {
+    "u": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "neumann": 1.0,
+      "ic": 1.0
+    },
+    "pT": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "ic": 1.0
+    },
+    "pT_residual_mode": "raw"
+  },
+  "budget": {
+    "fs_outer_iterations": 100,
+    "fixed_early_stop_disabled": true,
+    "save_fs50_and_fs100": true,
+    "engd_steps_per_subproblem_per_fs": 20,
+    "adam_steps_per_subproblem_per_fs": 1000,
+    "adam_lbfgs_switch_after_fs": 30,
+    "lbfgs_maxiter_per_subproblem_per_fs": 200
+  },
+  "optimizer": {
+    "jacobian_backend": "full-blockwise-local-jacrev",
+    "linear_solver": "eigh-refined",
+    "gram_ridge": 1e-07,
+    "line_search_levels": 31,
+    "line_search_grid": "{1,1/2,...,2^-30}",
+    "point_block_pt": null,
+    "point_block_u": null,
+    "full_jacobian_point_block_pt": 512,
+    "full_jacobian_point_block_u": 512,
+    "full_jacobian_autodiff_order": "vmap(jacrev(single-point local residual)); concatenate all point batches before J.T@J",
+    "eigh_relative_cutoff": 0.0,
+    "eigh_refinement_steps": 2,
+    "adam_learning_rate": null,
+    "lbfgs_ftol": null,
+    "lbfgs_gtol": null
+  },
+  "evaluation": {
+    "primary_metric": "E_common_max=max(u1_rel_l2,u2_rel_l2,p_rel_l2,T_rel_l2)",
+    "four_field_metric": "E_4F_max=max(u1_rel_l2,u2_rel_l2,xi_rel_l2,p_rel_l2,T_rel_l2)",
+    "TTA_thresholds": [
+      0.01,
+      0.001,
+      0.0008,
+      0.0006,
+      0.0004,
+      0.0002,
+      0.0001
+    ],
+    "TTA_patience_completed_sweeps": 3,
+    "TTA_evaluated_after_full_GFS_sweep_only": true,
+    "fixed_time_selection": "last completed GFS sweep at or before the time budget",
+    "jit_warmup_excluded": true,
+    "test_error_evaluation_excluded": true
+  },
+  "timing": {
+    "effective_training_seconds": 880.9416088545695,
+    "context_seconds": 0.09679608605802059,
+    "optimizer_seconds": 879.0996667612344,
+    "convergence_seconds": 1.7451460072770715,
+    "evaluation_excluded_seconds": 9.741648524068296,
+    "jit_warmup_excluded_seconds": 17.75917867012322,
+    "solver_wall_seconds_after_warmup": 886.890931318514,
+    "profile_totals": {
+      "context_seconds": 0.09679608605802059,
+      "wall_seconds": 878.2757151201367,
+      "optimizer_seconds": 878.1789190340787,
+      "residual_seconds": 9.085699236020446,
+      "jacobian_seconds": 138.8713574698195,
+      "gram_matmul_seconds": 406.7288561379537,
+      "gradient_matmul_seconds": 9.384593734517694,
+      "symmetrize_seconds": 2.394525404088199,
+      "assembly_seconds": 572.3912884518504,
+      "solve_seconds": 213.38052766676992,
+      "reference_seconds": 0.0,
+      "line_search_seconds": 90.2594206891954
+    }
+  },
+  "final_accuracy": {
+    "method": "4F-GFS-ENGD-FULLJ-EIGH-1e-7",
+    "method_key": "full_eigh1e7",
+    "method_family": "ENGD",
+    "jacobian_backend": "full-blockwise-local-jacrev",
+    "linear_solver": "eigh-refined",
+    "gram_ridge": 1e-07,
+    "fs_iteration": 100,
+    "stage": "pT:engd(20/20 accepted)|uXi:engd(20/20 accepted)",
+    "pT_optimizer_updates_completed": 2000,
+    "uXi_optimizer_updates_completed": 2000,
+    "total_block_optimizer_updates_completed": 4000,
+    "effective_training_seconds": 880.9416088545695,
+    "context_seconds_cumulative": 0.09679608605802059,
+    "optimizer_seconds_cumulative": 879.0996667612344,
+    "convergence_seconds_cumulative": 1.7451460072770715,
+    "evaluation_excluded_seconds_this_checkpoint": 0.0643146289512515,
+    "loss_pt_split": 5.686646618823529e-10,
+    "loss_u_split": 1.6803046768163222e-07,
+    "loss_pt_coupled_pde": 4.0177884871796303e-10,
+    "u_outer_change": 1.092464069637066e-06,
+    "pt_outer_change": 7.16960257797661e-07,
+    "u_l2": 6.356698013601031e-05,
+    "u_rel_l2": 6.575970182713981e-05,
+    "u_h1": 0.0006068636487798682,
+    "u1_l2": 4.8774140543496665e-05,
+    "u1_rel_l2": 7.13563913251622e-05,
+    "u1_h1": 0.00047635308117551276,
+    "u2_l2": 4.076572307533824e-05,
+    "u2_rel_l2": 5.964010551498871e-05,
+    "u2_h1": 0.00037599365721380267,
+    "xi_l2": 0.00015732493589759009,
+    "xi_rel_l2": 0.00018184309416442935,
+    "xi_h1": 0.004865141780103091,
+    "p_l2": 2.127191766700597e-05,
+    "p_rel_l2": 6.287313520005642e-05,
+    "p_h1": 0.00014446273105054197,
+    "T_l2": 1.999204025613765e-05,
+    "T_rel_l2": 7.767295763591452e-05,
+    "T_h1": 0.00013639180078518304,
+    "E_u_max": 7.13563913251622e-05,
+    "E_u_mean": 6.549824842007546e-05,
+    "E_u_rms": 6.575970182713981e-05,
+    "E_pT_max": 7.767295763591452e-05,
+    "E_pT_mean": 7.027304641798547e-05,
+    "E_pT_rms": 7.06615860202527e-05,
+    "E_common_max": 7.767295763591452e-05,
+    "E_common_mean": 6.788564741903046e-05,
+    "E_common_rms": 6.825466329596794e-05,
+    "E_4F_max": 0.00018184309416442935,
+    "E_4F_mean": 9.067713676811024e-05,
+    "E_4F_rms": 0.00010168746937737936
+  },
+  "fs50_to_fs100": {
+    "additional_effective_seconds": 440.3565487228334,
+    "metrics": {
+      "u1_rel_l2": {
+        "fs50": 9.311066138069822e-05,
+        "fs100": 7.13563913251622e-05,
+        "improvement_factor_fs50_over_fs100": 1.3048678562850036,
+        "relative_reduction": 0.23363887371168068
+      },
+      "u2_rel_l2": {
+        "fs50": 6.911284043220499e-05,
+        "fs100": 5.964010551498871e-05,
+        "improvement_factor_fs50_over_fs100": 1.1588316257226539,
+        "relative_reduction": 0.13706186662243158
+      },
+      "xi_rel_l2": {
+        "fs50": 0.00021643831341280472,
+        "fs100": 0.00018184309416442935,
+        "improvement_factor_fs50_over_fs100": 1.190247638533323,
+        "relative_reduction": 0.15983870278268708
+      },
+      "p_rel_l2": {
+        "fs50": 7.030738485940075e-05,
+        "fs100": 6.287313520005642e-05,
+        "improvement_factor_fs50_over_fs100": 1.1182420700938365,
+        "relative_reduction": 0.10573924309958604
+      },
+      "T_rel_l2": {
+        "fs50": 8.022280966277958e-05,
+        "fs100": 7.767295763591452e-05,
+        "improvement_factor_fs50_over_fs100": 1.0328280537328998,
+        "relative_reduction": 0.03178462631243506
+      },
+      "E_common_max": {
+        "fs50": 9.311066138069822e-05,
+        "fs100": 7.767295763591452e-05,
+        "improvement_factor_fs50_over_fs100": 1.1987526188605646,
+        "relative_reduction": 0.16579952838766887
+      },
+      "E_4F_max": {
+        "fs50": 0.00021643831341280472,
+        "fs100": 0.00018184309416442935,
+        "improvement_factor_fs50_over_fs100": 1.190247638533323,
+        "relative_reduction": 0.15983870278268708
+      }
+    }
+  },
+  "memory": {
+    "process_peak_rss_bytes": 1856491520,
+    "device_platform": "gpu",
+    "device_kind": "NVIDIA GeForce RTX 3090",
+    "device_bytes_in_use": 2095104,
+    "device_peak_bytes_in_use": 1144464384,
+    "device_bytes_limit": 22894312865
+  },
+  "environment": {
+    "THP_REQUIRE_ALL_GPUS_IDLE": "1",
+    "THP_GROUP1_BATCH_TAG": "distinct_seed12345_20260824_022014",
+    "THP_EXACT_CASE": "distinct",
+    "THP_GROUP1_RESULT_ROOT": "/home/jiangxun/projects/PINN/THP/group1_gfs/results_group1_gfs_distinct_v4",
+    "THP_GROUP1_METHODS": "full_eigh0,full_eigh1e7",
+    "CUDA_VISIBLE_DEVICES": "1",
+    "THP_RESULT_ROOT": "/home/jiangxun/projects/PINN/THP/group1_gfs/results_group1_gfs_distinct_v4",
+    "THP_FAST_DEBUG": "0",
+    "THP_SEED": "12345",
+    "THP_NU": "0.3",
+    "THP_A0": "0.2",
+    "THP_B0": "0.1",
+    "THP_C0": "0.2",
+    "THP_KAPPA": "0.1",
+    "THP_THETA": "0.1",
+    "THP_PT_RESIDUAL_MODE": "raw",
+    "THP_WEIGHT_PT_PDE": "1.0",
+    "THP_WEIGHT_PT_DIRICHLET": "1.0",
+    "THP_WEIGHT_PT_IC": "1.0",
+    "THP_N_T_PDE": "16",
+    "THP_N_T_BOUNDARY": "17",
+    "THP_FS_ITERATIONS": "100",
+    "THP_GROUP1_FS_ITERATIONS": "100",
+    "THP_ENABLE_FS_EARLY_STOP": "0",
+    "THP_GROUP1_ENGD_STEPS_PER_BLOCK": "20",
+    "THP_GROUP1_ADAM_STEPS_PER_BLOCK": "1000",
+    "THP_GROUP1_ADAM_LR": "1e-3",
+    "THP_GROUP1_ADAM_LBFGS_SWITCH_FS": "30",
+    "THP_GROUP1_LBFGS_MAXITER_PER_BLOCK": "200",
+    "THP_GROUP1_LBFGS_MAXFUN_PER_BLOCK": "10000",
+    "THP_GROUP1_LBFGS_FTOL": "1e-15",
+    "THP_GROUP1_LBFGS_GTOL": "1e-10",
+    "THP_LINE_SEARCH_LEVELS": "31",
+    "THP_POINT_JAC_BLOCK_PT": "512",
+    "THP_POINT_JAC_BLOCK_U": "512",
+    "THP_FULL_JAC_POINT_BLOCK_PT": "512",
+    "THP_FULL_JAC_POINT_BLOCK_U": "512",
+    "THP_EIGH_RELATIVE_CUTOFF": "0.0",
+    "THP_EIGH_REFINEMENT_STEPS": "2",
+    "THP_TTA_PATIENCE": "3",
+    "THP_TIME_TO_ACCURACY_THRESHOLDS": "1e-2,1e-3,8e-4,6e-4,4e-4,2e-4,1e-4",
+    "THP_GROUP1_FIXED_FS_CHECKPOINTS": "0,50,100",
+    "THP_FIXED_TIME_BUDGETS_SECONDS": "10,30,60,120,300,600,1200,1800,3600",
+    "THP_XLA_PREALLOCATE": "true",
+    "THP_XLA_MEM_FRACTION": "0.90",
+    "THP_VERIFY_MANUFACTURED": "1",
+    "THP_SAVE_PLOTS": "0",
+    "THP_RUN_NAME": "group1_gfs_distinct_seed12345_20260824_022014_full_eigh1e7",
+    "THP_GROUP1_METHOD": "full_eigh1e7"
+  }
+}

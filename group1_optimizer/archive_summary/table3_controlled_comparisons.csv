@@ -1,0 +1,5 @@
+control,configuration,baseline_method_key,candidate_method_key,fs_iteration,baseline_time_seconds,candidate_time_seconds,baseline_E_common_max,candidate_E_common_max
+Streaming,"FJ+LS, 0 -> S+LS, 0",engd_fjls,js_lstsq0,100,1613.2876138770953,1542.3557136282325,0.00025606450898762437,0.0003258191900847678
+Solver,"S+LS, 0 -> S+EIGH, 0",js_lstsq0,js_eigh0,100,1542.3557136282325,802.6677402211353,0.0003258191900847678,0.0005642418531257192
+Damping,"S+EIGH, 0 -> S+EIGH, 1e-7",js_eigh0,js_eigh1e7,100,802.6677402211353,800.4521186631173,0.0005642418531257192,7.712096051292382e-05
+"Streamed, damped","FJ+EIGH, 1e-7 -> S+EIGH, 1e-7",full_eigh1e7,js_eigh1e7,100,880.9416088545695,800.4521186631173,7.767295763591452e-05,7.712096051292382e-05

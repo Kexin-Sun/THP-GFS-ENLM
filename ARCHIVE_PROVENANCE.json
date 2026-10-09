@@ -1,0 +1,120 @@
+{
+  "archive_revision": "all-five-groups-github-ready-20261009",
+  "sources": [
+    {
+      "attachment": "15-group1_gfs.zip",
+      "bytes": 12291634,
+      "sha256": "351d556a4a6c68de967678f1bda06468e6acab019b95a7a22ffa13345e9ed414"
+    },
+    {
+      "attachment": "17-thp-group2-architecture-comparison1.zip",
+      "bytes": 56800822,
+      "sha256": "b9f995f341c4642593b6e5daebc5c18aa1d3d97a403980154b50082af418dedf"
+    },
+    {
+      "attachment": "16-group5_storage_degeneracy.tar",
+      "bytes": 196242432,
+      "sha256": "df5a51f6fc2261d51c87c30353b55d5797b463f30aad9ea781e85eddb24200d4"
+    },
+    {
+      "attachment": "11-cas-sc-template.pdf",
+      "bytes": 1002191,
+      "sha256": "2e3b9478270688e48a82d64c165d6748b985608a2953a671e2764def66455881"
+    }
+  ],
+  "canonical_core": {
+    "source_member": "group5_storage_degeneracy/thp-four-field-core.py",
+    "source_sha256": "dd1861f8e113465b2bfb2a30841df153b0407c87adcc382c55ab581ba773dc25",
+    "archived_sha256": "09dc61d26acc2715eab2ee75850d472055f104884d9d35eaba95a28473f1d39d",
+    "comparison": {
+      "functions_or_classes": 113,
+      "changed_reporting_functions": [
+        "_comparison_run_identity",
+        "pt_residual_metric_metadata",
+        "save_metadata"
+      ],
+      "all_numerical_functions_unchanged": true
+    }
+  },
+  "frozen_results": {
+    "files": 1004,
+    "verified_directly_against_attachment_members": true,
+    "byte_identical": true
+  },
+  "numerical_comparison": {
+    "four_field": {
+      "functions_or_classes": 113,
+      "changed_reporting_functions": [
+        "_comparison_run_identity",
+        "pt_residual_metric_metadata",
+        "save_metadata"
+      ],
+      "all_numerical_functions_unchanged": true
+    },
+    "group1": {
+      "functions_or_classes": 47,
+      "changed_reporting_functions": [],
+      "all_numerical_functions_unchanged": true
+    },
+    "three_field": {
+      "functions_or_classes": 106,
+      "changed_reporting_functions": [],
+      "all_numerical_functions_unchanged": true
+    },
+    "coupled": {
+      "functions_or_classes": 33,
+      "changed_reporting_functions": [],
+      "all_numerical_functions_unchanged": true
+    }
+  },
+  "excluded": "Caches, interrupted runs without metadata, external launcher logs and obsolete aggregate reports. Complete supplementary runs are retained.",
+  "paper_cell_audit": {
+    "checked_cells": 120,
+    "differences": [
+      {
+        "table": 9,
+        "case": "S4",
+        "field": "p",
+        "metric": "spatial_H1",
+        "manuscript": "1.17e-04",
+        "direct_history": "1.18e-04",
+        "unrounded_history": 0.00011788844874673654
+      }
+    ],
+    "table10_and_table11_match": true
+  },
+  "report_update": {
+    "date": "2026-10-09",
+    "all_group_readmes_include_run_instructions": true,
+    "group1_strict_json": true,
+    "undefined_speedup_paths": [
+      "/js_speedup/1/speedup_full_over_streamed",
+      "/js_speedup/3/speedup_full_over_streamed",
+      "/js_speedup/4/speedup_full_over_streamed"
+    ],
+    "all_finite_group1_summary_values_unchanged": true,
+    "frozen_result_files_reverified": 1004
+  },
+  "environment_snapshot": {
+    "source": "Author-supplied python --version and pip freeze output on 2026-10-09",
+    "python": "3.10.10",
+    "packages": 189,
+    "inventory_path": "environment/pip_freeze_20261009.txt",
+    "inventory_sha256": "dccd95bcf47d5baed5dcb4651fef29cde8db784491d5b72984b55cffcc44f482",
+    "historical_python_jax_metadata_coverage": 45,
+    "exact_historical_environment_for_all_runs_confirmed": false,
+    "clean_installation_tested": false
+  },
+  "github_preparation": {
+    "core_autocrlf": true,
+    "frozen_staged_blobs_unchanged": 1004,
+    "frozen_clone_files_unchanged": 1004,
+    "new_runs_reports_ignored": true,
+    "largest_file_bytes": 7077993,
+    "full_regeneration_passed": true,
+    "dry_run_launchers_passed": 5,
+    "cross_group_frozen_rejections_passed": 25,
+    "normalized_run_path_guard_tested": true,
+    "training_numerical_functions_unchanged": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "group": 4,
+  "description": "Five-case four-field robustness archive",
+  "batch_tag": "v1",
+  "result_root": "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group4_small_transport/results",
+  "n_runs": 5,
+  "expected_runs": 5,
+  "seeds": [
+    12345
+  ],
+  "cases": [
+    {
+      "case_index": 1,
+      "nu": 0.3,
+      "K": 0.1,
+      "Theta": 0.1
+    },
+    {
+      "case_index": 2,
+      "nu": 0.3,
+      "K": 0.1,
+      "Theta": 1e-06
+    },
+    {
+      "case_index": 3,
+      "nu": 0.3,
+      "K": 1e-06,
+      "Theta": 0.1
+    },
+    {
+      "case_index": 4,
+      "nu": 0.3,
+      "K": 1e-06,
+      "Theta": 1e-06
+    },
+    {
+      "case_index": 5,
+      "nu": 0.4999999,
+      "K": 1e-06,
+      "Theta": 1e-06
+    }
+  ],
+  "method": "4F-GFS-JS-EIGH-1e-7",
+  "fixed_budget": 50,
+  "checkpoints": [
+    20,
+    30,
+    40,
+    50
+  ],
+  "tables_only": true,
+  "files": [
+    "group4_final_summary.csv",
+    "group4_final_summary_mean_std.csv",
+    "group4_fixed_budget.csv",
+    "group4_tta_Ecommon.csv",
+    "group4_gram_diagnostics.csv",
+    "group4_robustness_ratios.csv",
+    "group4_FS100_decision.csv",
+    "group4_publication_main_table.csv",
+    "group4_publication_tables.md"
+  ]
+}

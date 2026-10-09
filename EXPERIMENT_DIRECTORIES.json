@@ -1,0 +1,7 @@
+{
+  "1": "group1_optimizer",
+  "2": "group2_formulation",
+  "3": "group3_incompressible",
+  "4": "group4_small_transport",
+  "5": "group5_storage_degeneracy"
+}

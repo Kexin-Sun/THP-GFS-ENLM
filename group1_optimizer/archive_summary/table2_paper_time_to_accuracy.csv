@@ -1,0 +1,26 @@
+method,method_key,metric,threshold,patience,reached,first_fs_iteration,confirmation_fs_iteration,time_to_accuracy_seconds,value_at_accuracy,final_value,display_method
+4F-GFS-Adam,adam,E_common_max,0.001,3,False,-1,-1,nan,nan,0.053159317653493396,Adam
+4F-GFS-Adam,adam,E_common_max,0.0006,3,False,-1,-1,nan,nan,0.053159317653493396,Adam
+4F-GFS-Adam,adam,E_common_max,0.0004,3,False,-1,-1,nan,nan,0.053159317653493396,Adam
+4F-GFS-Adam,adam,E_common_max,0.0002,3,False,-1,-1,nan,nan,0.053159317653493396,Adam
+4F-GFS-Adam,adam,E_common_max,0.0001,3,False,-1,-1,nan,nan,0.053159317653493396,Adam
+4F-GFS-Adam+L-BFGS,adam_lbfgs,E_common_max,0.001,3,False,-1,-1,nan,nan,0.006348919472007253,Adam+L-BFGS
+4F-GFS-Adam+L-BFGS,adam_lbfgs,E_common_max,0.0006,3,False,-1,-1,nan,nan,0.006348919472007253,Adam+L-BFGS
+4F-GFS-Adam+L-BFGS,adam_lbfgs,E_common_max,0.0004,3,False,-1,-1,nan,nan,0.006348919472007253,Adam+L-BFGS
+4F-GFS-Adam+L-BFGS,adam_lbfgs,E_common_max,0.0002,3,False,-1,-1,nan,nan,0.006348919472007253,Adam+L-BFGS
+4F-GFS-Adam+L-BFGS,adam_lbfgs,E_common_max,0.0001,3,False,-1,-1,nan,nan,0.006348919472007253,Adam+L-BFGS
+4F-GFS-ENGD-FJLS-0,engd_fjls,E_common_max,0.001,3,True,11,13,181.63698613177985,0.0007975632388353549,0.00025606450898762437,"ENGD (FJ+LS, $\gamma=0$)"
+4F-GFS-ENGD-FJLS-0,engd_fjls,E_common_max,0.0006,3,True,12,14,197.6886048167944,0.00030752517529256866,0.00025606450898762437,"ENGD (FJ+LS, $\gamma=0$)"
+4F-GFS-ENGD-FJLS-0,engd_fjls,E_common_max,0.0004,3,True,12,14,197.6886048167944,0.00030752517529256866,0.00025606450898762437,"ENGD (FJ+LS, $\gamma=0$)"
+4F-GFS-ENGD-FJLS-0,engd_fjls,E_common_max,0.0002,3,False,-1,-1,nan,nan,0.00025606450898762437,"ENGD (FJ+LS, $\gamma=0$)"
+4F-GFS-ENGD-FJLS-0,engd_fjls,E_common_max,0.0001,3,False,-1,-1,nan,nan,0.00025606450898762437,"ENGD (FJ+LS, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-0,js_eigh0,E_common_max,0.001,3,True,11,13,87.62098972126842,0.000859926193192677,0.0005642418531257192,"ENGD (S+EIGH, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-0,js_eigh0,E_common_max,0.0006,3,True,12,14,95.65835902560502,0.0005668630243703572,0.0005642418531257192,"ENGD (S+EIGH, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-0,js_eigh0,E_common_max,0.0004,3,False,-1,-1,nan,nan,0.0005642418531257192,"ENGD (S+EIGH, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-0,js_eigh0,E_common_max,0.0002,3,False,-1,-1,nan,nan,0.0005642418531257192,"ENGD (S+EIGH, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-0,js_eigh0,E_common_max,0.0001,3,False,-1,-1,nan,nan,0.0005642418531257192,"ENGD (S+EIGH, $\gamma=0$)"
+4F-GFS-JS-ENGD-EIGH-1e-7,js_eigh1e7,E_common_max,0.001,3,True,4,6,31.753883299417794,0.0005439215676710952,7.712096051292382e-05,"ENLM (S+EIGH, $\gamma=10^{-7}$)"
+4F-GFS-JS-ENGD-EIGH-1e-7,js_eigh1e7,E_common_max,0.0006,3,True,4,6,31.753883299417794,0.0005439215676710952,7.712096051292382e-05,"ENLM (S+EIGH, $\gamma=10^{-7}$)"
+4F-GFS-JS-ENGD-EIGH-1e-7,js_eigh1e7,E_common_max,0.0004,3,True,5,7,39.72906362358481,0.0003360798336406049,7.712096051292382e-05,"ENLM (S+EIGH, $\gamma=10^{-7}$)"
+4F-GFS-JS-ENGD-EIGH-1e-7,js_eigh1e7,E_common_max,0.0002,3,True,9,11,71.65791343711317,0.00018362235392217944,7.712096051292382e-05,"ENLM (S+EIGH, $\gamma=10^{-7}$)"
+4F-GFS-JS-ENGD-EIGH-1e-7,js_eigh1e7,E_common_max,0.0001,3,True,37,39,295.99347022455186,9.993553479237255e-05,7.712096051292382e-05,"ENLM (S+EIGH, $\gamma=10^{-7}$)"

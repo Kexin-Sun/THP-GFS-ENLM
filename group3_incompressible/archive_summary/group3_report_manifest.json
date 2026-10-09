@@ -1,0 +1,41 @@
+{
+  "batch_tag": "v1",
+  "result_root": "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group3_incompressible/results",
+  "output_dir": "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group3_incompressible/archive_summary",
+  "seeds": [
+    12345
+  ],
+  "nus": [
+    0.49,
+    0.4999,
+    0.49999,
+    0.4999999
+  ],
+  "methods": [
+    "gfs_three_field",
+    "gfs_four_field"
+  ],
+  "fs_budget": 50,
+  "checkpoints": [
+    20,
+    30,
+    40,
+    50
+  ],
+  "profile_spectrum_window": "FS41-FS50",
+  "acceptance_window": "FS1-FS50",
+  "tta_thresholds": [
+    0.01,
+    0.001,
+    0.0008,
+    0.0006,
+    0.0004,
+    0.0002
+  ],
+  "tta_patience": 3,
+  "primary_metric": "max(u1_rel_l2,u2_rel_l2,p_rel_l2,T_rel_l2)",
+  "figures": [
+    "group3_Ecommon_vs_incompressibility",
+    "group3_optimizer_diagnostics"
+  ]
+}

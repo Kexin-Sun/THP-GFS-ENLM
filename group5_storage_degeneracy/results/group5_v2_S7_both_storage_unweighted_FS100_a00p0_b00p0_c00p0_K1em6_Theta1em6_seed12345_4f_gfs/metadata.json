@@ -1,0 +1,244 @@
+{
+  "method": "THP-four-field-iterative-decoupling-ENGD",
+  "exact_case": "distinct",
+  "experiment_design": {
+    "group": 5,
+    "case_id": "S7",
+    "variant": "both_storage_unweighted"
+  },
+  "profiling": {
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "automatic_fp64_cutoff": true,
+    "refinement_steps": 2,
+    "gram_ridge": 1e-07,
+    "lstsq_rcond": null,
+    "line_search": "vectorized-logarithmic-grid",
+    "line_search_positive_levels": 31,
+    "line_search_implicit_zero_rejection": true,
+    "line_search_cached_frozen_terms": true,
+    "profile_rows": 4000,
+    "jacobian_backend": "pointwise",
+    "point_block_pt": 512,
+    "point_block_u": 512,
+    "fuse_gram_blocks": true,
+    "cache_line_search": true
+  },
+  "seed": 12345,
+  "physical_parameters": {
+    "E": 1.0,
+    "nu": 0.3,
+    "lambda": 0.5769230769230769,
+    "mu": 0.3846153846153846,
+    "alpha": 0.1,
+    "beta": 0.1,
+    "a0": 0.0,
+    "b0": 0.0,
+    "c0": 0.0,
+    "K": 1e-06,
+    "Theta": 1e-06,
+    "t_final": 1.0
+  },
+  "loss_weighting": {
+    "objective_definition": "Each block approximates 0.5 * weight * integral(||residual||^2).",
+    "block_scale_definition": "sqrt(weight * measure / n_points)",
+    "weights": {
+      "u": {
+        "pde": 1.0,
+        "dirichlet": 1.0,
+        "neumann": 1.0,
+        "ic": 1.0
+      },
+      "pt": {
+        "pde": 1.0,
+        "dirichlet": 1.0,
+        "ic": 1.0
+      }
+    },
+    "residual_block_scales": {
+      "u": {
+        "pde": 0.015625,
+        "dirichlet": 0.049507377148833714,
+        "neumann": 0.049507377148833714,
+        "ic": 0.045454545454545456
+      },
+      "pt": {
+        "pde": 0.015625,
+        "dirichlet": 0.049507377148833714,
+        "ic": 0.045454545454545456
+      }
+    }
+  },
+  "four_field_split": {
+    "xi_definition": "-lambda*div(u)+alpha*p+beta*T",
+    "C_alpha": 0.017333333333333336,
+    "C_alpha_beta": 0.017333333333333336,
+    "C_beta": 0.017333333333333336,
+    "pt_pde_residual_metric": {
+      "mode": "modal_both_scaled",
+      "parallel_variable": "(alpha*p+beta*T)/sqrt(alpha^2+beta^2)",
+      "perpendicular_variable": "(beta*p-alpha*T)/sqrt(alpha^2+beta^2)",
+      "parallel_storage": 0.034666666666666665,
+      "modal_storage_coupling": 0.0,
+      "parallel_scale": 0.034666666666666665,
+      "perpendicular_storage": 0.0,
+      "perpendicular_scale": 1e-06,
+      "changes_exact_pde_solution": false
+    },
+    "iterations_requested": 100,
+    "iterations_completed": 100,
+    "adaptive_stop_enabled": false,
+    "adaptive_stop_min_iterations": 20,
+    "adaptive_stop_patience": 2,
+    "adaptive_stop_outer_tolerance": 1e-05,
+    "adaptive_stop_coupled_pt_tolerance": 1e-08,
+    "adaptive_stop_u_loss_tolerance": 1e-08,
+    "adaptive_stop_triggered": false,
+    "final_stop_counter": 0
+  },
+  "network": {
+    "uxi_sizes": [
+      3,
+      32,
+      32,
+      3
+    ],
+    "u_sizes": [
+      3,
+      32,
+      32,
+      3
+    ],
+    "pt_sizes": [
+      3,
+      32,
+      32,
+      2
+    ]
+  },
+  "sampling": {
+    "fixed_uniform": true,
+    "grid_shape": {
+      "pde": [
+        16,
+        16,
+        16
+      ],
+      "ic": [
+        22,
+        22
+      ],
+      "boundary_per_side": [
+        24,
+        17
+      ],
+      "evaluation": [
+        40,
+        40,
+        40
+      ]
+    },
+    "pde_points": 4096,
+    "ic_points": 484,
+    "u_dirichlet_points": 816,
+    "u_neumann_points": 816,
+    "pt_dirichlet_points": 1632,
+    "evaluation_points": 64000
+  },
+  "engd_pt": {
+    "line_search_levels": 31,
+    "gram_ridge": 1e-07,
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "refinement_steps": 2,
+    "lstsq_rcond": null,
+    "jacobian_backend": "pointwise",
+    "gradient_tolerance": 1e-14,
+    "require_loss_decrease": true,
+    "steps_per_gfs_iteration": 20
+  },
+  "engd_u": {
+    "line_search_levels": 31,
+    "gram_ridge": 1e-07,
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "refinement_steps": 2,
+    "lstsq_rcond": null,
+    "jacobian_backend": "pointwise",
+    "gradient_tolerance": 1e-14,
+    "require_loss_decrease": true,
+    "steps_per_gfs_iteration": 20
+  },
+  "timing": {
+    "jit_warmup_seconds_excluded": 18.30978940613568,
+    "context_seconds": 1.9843994025141,
+    "assembly_seconds": 486.2897161645815,
+    "solve_seconds": 219.31605514511466,
+    "line_search_seconds": 90.99155896529555,
+    "convergence_check_seconds": 4.074823221191764,
+    "evaluation_seconds_excluded": 10.74021549616009,
+    "reference_validation_seconds_excluded": 0.0,
+    "total_solver_wall_seconds": 817.5836919518188,
+    "optimizer_seconds": 798.5817296775058,
+    "effective_training_seconds": 802.6565528986976,
+    "effective_training_definition": "optimizer_seconds + convergence_check_seconds",
+    "jit_warmup_excluded": true,
+    "test_grid_evaluation_excluded": true,
+    "lstsq_reference_validation_excluded": true
+  },
+  "accuracy_reporting": {
+    "primary_metric": "E_common_max=max(u1_rel_l2,u2_rel_l2,p_rel_l2,T_rel_l2)",
+    "auxiliary_four_field_metric": "E_4F_max=max(u1_rel_l2,u2_rel_l2,xi_rel_l2,p_rel_l2,T_rel_l2)",
+    "u_mean_metric": "0.5*(u1_rel_l2+u2_rel_l2)",
+    "pT_mean_metric": "0.5*(p_rel_l2+T_rel_l2)",
+    "q_parallel_metric": "relative_L2((alpha*p+beta*T)/sqrt(alpha^2+beta^2))",
+    "q_perp_metric": "relative_L2((beta*p-alpha*T)/sqrt(alpha^2+beta^2))",
+    "time_to_accuracy_thresholds": [
+      0.01,
+      0.008,
+      0.006,
+      0.005,
+      0.004,
+      0.003,
+      0.002,
+      0.001,
+      0.0008,
+      0.0006,
+      0.0004,
+      0.0002
+    ],
+    "time_to_accuracy_patience_completed_sweeps": 3,
+    "fixed_budget_checkpoints": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      80,
+      100
+    ],
+    "time_to_accuracy_uses_effective_training_seconds": true,
+    "time_to_accuracy_is_discrete_at_fs_checkpoints": true
+  },
+  "memory": {
+    "process_peak_rss_bytes": 1872846848,
+    "device_platform": "gpu",
+    "device_kind": "NVIDIA GeForce RTX 3090",
+    "device_bytes_in_use": 2103296,
+    "device_peak_bytes_in_use": 1143670016,
+    "device_bytes_limit": 22894312865
+  },
+  "runtime": {
+    "python": "3.10.10 (main, Mar 21 2023, 18:45:11) [GCC 11.2.0]",
+    "jax": "0.4.30",
+    "jax_backend": "gpu",
+    "jax_enable_x64": true,
+    "xla_python_client_preallocate": "true",
+    "xla_python_client_mem_fraction": "0.9"
+  },
+  "save_plots": false,
+  "fast_debug": false
+}

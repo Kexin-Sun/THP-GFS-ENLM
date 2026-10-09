@@ -1,0 +1,283 @@
+{
+  "protocol": "THP-Group1-4F-GFS-optimizer-JS-v3",
+  "method": "4F-GFS-ENGD-FULLJ-EIGH-0",
+  "method_key": "full_eigh0",
+  "method_family": "ENGD",
+  "definition": "Every method uses the same four-field GFS outer iteration; only the optimizer/Gram backend differs.",
+  "seed": 12345,
+  "exact_case": "distinct",
+  "physical_parameters": {
+    "nu": 0.3,
+    "a0": 0.2,
+    "b0": 0.1,
+    "c0": 0.2,
+    "kappa": 0.1,
+    "theta": 0.1
+  },
+  "network_sizes": {
+    "u_xi": [
+      3,
+      32,
+      32,
+      3
+    ],
+    "p_T": [
+      3,
+      32,
+      32,
+      2
+    ]
+  },
+  "parameter_counts": {
+    "u_xi": 1283,
+    "p_T": 1250
+  },
+  "sampling": {
+    "PDE": 4096,
+    "U_Dirichlet": 816,
+    "U_Neumann": 816,
+    "PT_Dirichlet": 1632,
+    "initial": 484,
+    "evaluation": 64000
+  },
+  "loss_weighting": {
+    "u": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "neumann": 1.0,
+      "ic": 1.0
+    },
+    "pT": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "ic": 1.0
+    },
+    "pT_residual_mode": "raw"
+  },
+  "budget": {
+    "fs_outer_iterations": 100,
+    "fixed_early_stop_disabled": true,
+    "save_fs50_and_fs100": true,
+    "engd_steps_per_subproblem_per_fs": 20,
+    "adam_steps_per_subproblem_per_fs": 1000,
+    "adam_lbfgs_switch_after_fs": 30,
+    "lbfgs_maxiter_per_subproblem_per_fs": 200
+  },
+  "optimizer": {
+    "jacobian_backend": "full-blockwise-local-jacrev",
+    "linear_solver": "eigh-refined",
+    "gram_ridge": 0.0,
+    "line_search_levels": 31,
+    "line_search_grid": "{1,1/2,...,2^-30}",
+    "point_block_pt": null,
+    "point_block_u": null,
+    "full_jacobian_point_block_pt": 512,
+    "full_jacobian_point_block_u": 512,
+    "full_jacobian_autodiff_order": "vmap(jacrev(single-point local residual)); concatenate all point batches before J.T@J",
+    "eigh_relative_cutoff": 0.0,
+    "eigh_refinement_steps": 2,
+    "adam_learning_rate": null,
+    "lbfgs_ftol": null,
+    "lbfgs_gtol": null
+  },
+  "evaluation": {
+    "primary_metric": "E_common_max=max(u1_rel_l2,u2_rel_l2,p_rel_l2,T_rel_l2)",
+    "four_field_metric": "E_4F_max=max(u1_rel_l2,u2_rel_l2,xi_rel_l2,p_rel_l2,T_rel_l2)",
+    "TTA_thresholds": [
+      0.01,
+      0.001,
+      0.0008,
+      0.0006,
+      0.0004,
+      0.0002,
+      0.0001
+    ],
+    "TTA_patience_completed_sweeps": 3,
+    "TTA_evaluated_after_full_GFS_sweep_only": true,
+    "fixed_time_selection": "last completed GFS sweep at or before the time budget",
+    "jit_warmup_excluded": true,
+    "test_error_evaluation_excluded": true
+  },
+  "timing": {
+    "effective_training_seconds": 886.3879326572642,
+    "context_seconds": 0.09533984959125519,
+    "optimizer_seconds": 884.5747799072415,
+    "convergence_seconds": 1.7178129004314542,
+    "evaluation_excluded_seconds": 9.361233890987933,
+    "jit_warmup_excluded_seconds": 17.98743448033929,
+    "solver_wall_seconds_after_warmup": 892.2474217563868,
+    "profile_totals": {
+      "context_seconds": 0.09533984959125519,
+      "wall_seconds": 883.7407157765701,
+      "optimizer_seconds": 883.6453759269789,
+      "residual_seconds": 8.962342033162713,
+      "jacobian_seconds": 137.52999337390065,
+      "gram_matmul_seconds": 412.5540614500642,
+      "gradient_matmul_seconds": 9.3673066040501,
+      "symmetrize_seconds": 2.418934792280197,
+      "assembly_seconds": 576.6878527728841,
+      "solve_seconds": 214.76731615234166,
+      "reference_seconds": 0.0,
+      "line_search_seconds": 90.05415511876345
+    }
+  },
+  "final_accuracy": {
+    "method": "4F-GFS-ENGD-FULLJ-EIGH-0",
+    "method_key": "full_eigh0",
+    "method_family": "ENGD",
+    "jacobian_backend": "full-blockwise-local-jacrev",
+    "linear_solver": "eigh-refined",
+    "gram_ridge": 0.0,
+    "fs_iteration": 100,
+    "stage": "pT:engd(20/20 accepted)|uXi:engd(20/20 accepted)",
+    "pT_optimizer_updates_completed": 2000,
+    "uXi_optimizer_updates_completed": 2000,
+    "total_block_optimizer_updates_completed": 4000,
+    "effective_training_seconds": 886.3879326572642,
+    "context_seconds_cumulative": 0.09533984959125519,
+    "optimizer_seconds_cumulative": 884.5747799072415,
+    "convergence_seconds_cumulative": 1.7178129004314542,
+    "evaluation_excluded_seconds_this_checkpoint": 0.05552208609879017,
+    "loss_pt_split": 7.275520441943942e-09,
+    "loss_u_split": 9.714395949100179e-07,
+    "loss_pt_coupled_pde": 5.292057012627318e-09,
+    "u_outer_change": 3.986838006389931e-09,
+    "pt_outer_change": 1.0954446221806713e-08,
+    "u_l2": 0.00012058753394383162,
+    "u_rel_l2": 0.0001247471605423062,
+    "u_h1": 0.0012008829583457516,
+    "u1_l2": 8.189698273649254e-05,
+    "u1_rel_l2": 0.0001198149897338255,
+    "u1_h1": 0.0008884267563752938,
+    "u2_l2": 8.851122844765732e-05,
+    "u2_rel_l2": 0.00012949160730263225,
+    "u2_h1": 0.0008079713968957803,
+    "xi_l2": 0.0003526083155594146,
+    "xi_rel_l2": 0.000407560230446683,
+    "xi_h1": 0.01117732441488751,
+    "p_l2": 0.00014460282987146324,
+    "p_rel_l2": 0.00042740073627310713,
+    "p_h1": 0.0006558082703870336,
+    "T_l2": 0.0001951657603528875,
+    "T_rel_l2": 0.000758256868316227,
+    "T_h1": 0.000849589701703301,
+    "E_u_max": 0.00012949160730263225,
+    "E_u_mean": 0.00012465329851822887,
+    "E_u_rms": 0.0001247471605423062,
+    "E_pT_max": 0.000758256868316227,
+    "E_pT_mean": 0.000592828802294667,
+    "E_pT_rms": 0.0006154774032064565,
+    "E_common_max": 0.000758256868316227,
+    "E_common_mean": 0.000358741050406448,
+    "E_common_rms": 0.0004440575908151616,
+    "E_4F_max": 0.000758256868316227,
+    "E_4F_mean": 0.000368504886414495,
+    "E_4F_rms": 0.00043700204056366037
+  },
+  "fs50_to_fs100": {
+    "additional_effective_seconds": 441.21888293884695,
+    "metrics": {
+      "u1_rel_l2": {
+        "fs50": 0.00011981450838045823,
+        "fs100": 0.0001198149897338255,
+        "improvement_factor_fs50_over_fs100": 0.999995982527993,
+        "relative_reduction": -4.017488147045611e-06
+      },
+      "u2_rel_l2": {
+        "fs50": 0.00012949179267816573,
+        "fs100": 0.00012949160730263225,
+        "improvement_factor_fs50_over_fs100": 1.0000014315640784,
+        "relative_reduction": 1.4315620290306086e-06
+      },
+      "xi_rel_l2": {
+        "fs50": 0.0004075604690072874,
+        "fs100": 0.000407560230446683,
+        "improvement_factor_fs50_over_fs100": 1.0000005853382803,
+        "relative_reduction": 5.85337937564212e-07
+      },
+      "p_rel_l2": {
+        "fs50": 0.00042743649331733875,
+        "fs100": 0.00042740073627310713,
+        "improvement_factor_fs50_over_fs100": 1.0000836616346136,
+        "relative_reduction": 8.365463592996392e-05
+      },
+      "T_rel_l2": {
+        "fs50": 0.0007582973962776365,
+        "fs100": 0.000758256868316227,
+        "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+        "relative_reduction": 5.3445998375312165e-05
+      },
+      "E_common_max": {
+        "fs50": 0.0007582973962776365,
+        "fs100": 0.000758256868316227,
+        "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+        "relative_reduction": 5.3445998375312165e-05
+      },
+      "E_4F_max": {
+        "fs50": 0.0007582973962776365,
+        "fs100": 0.000758256868316227,
+        "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+        "relative_reduction": 5.3445998375312165e-05
+      }
+    }
+  },
+  "memory": {
+    "process_peak_rss_bytes": 1855967232,
+    "device_platform": "gpu",
+    "device_kind": "NVIDIA GeForce RTX 3090",
+    "device_bytes_in_use": 2095104,
+    "device_peak_bytes_in_use": 1144464384,
+    "device_bytes_limit": 22894312865
+  },
+  "environment": {
+    "THP_REQUIRE_ALL_GPUS_IDLE": "1",
+    "THP_GROUP1_BATCH_TAG": "distinct_seed12345_20260824_022014",
+    "THP_EXACT_CASE": "distinct",
+    "THP_GROUP1_RESULT_ROOT": "/home/jiangxun/projects/PINN/THP/group1_gfs/results_group1_gfs_distinct_v4",
+    "THP_GROUP1_METHODS": "full_eigh0,full_eigh1e7",
+    "CUDA_VISIBLE_DEVICES": "1",
+    "THP_RESULT_ROOT": "/home/jiangxun/projects/PINN/THP/group1_gfs/results_group1_gfs_distinct_v4",
+    "THP_FAST_DEBUG": "0",
+    "THP_SEED": "12345",
+    "THP_NU": "0.3",
+    "THP_A0": "0.2",
+    "THP_B0": "0.1",
+    "THP_C0": "0.2",
+    "THP_KAPPA": "0.1",
+    "THP_THETA": "0.1",
+    "THP_PT_RESIDUAL_MODE": "raw",
+    "THP_WEIGHT_PT_PDE": "1.0",
+    "THP_WEIGHT_PT_DIRICHLET": "1.0",
+    "THP_WEIGHT_PT_IC": "1.0",
+    "THP_N_T_PDE": "16",
+    "THP_N_T_BOUNDARY": "17",
+    "THP_FS_ITERATIONS": "100",
+    "THP_GROUP1_FS_ITERATIONS": "100",
+    "THP_ENABLE_FS_EARLY_STOP": "0",
+    "THP_GROUP1_ENGD_STEPS_PER_BLOCK": "20",
+    "THP_GROUP1_ADAM_STEPS_PER_BLOCK": "1000",
+    "THP_GROUP1_ADAM_LR": "1e-3",
+    "THP_GROUP1_ADAM_LBFGS_SWITCH_FS": "30",
+    "THP_GROUP1_LBFGS_MAXITER_PER_BLOCK": "200",
+    "THP_GROUP1_LBFGS_MAXFUN_PER_BLOCK": "10000",
+    "THP_GROUP1_LBFGS_FTOL": "1e-15",
+    "THP_GROUP1_LBFGS_GTOL": "1e-10",
+    "THP_LINE_SEARCH_LEVELS": "31",
+    "THP_POINT_JAC_BLOCK_PT": "512",
+    "THP_POINT_JAC_BLOCK_U": "512",
+    "THP_FULL_JAC_POINT_BLOCK_PT": "512",
+    "THP_FULL_JAC_POINT_BLOCK_U": "512",
+    "THP_EIGH_RELATIVE_CUTOFF": "0.0",
+    "THP_EIGH_REFINEMENT_STEPS": "2",
+    "THP_TTA_PATIENCE": "3",
+    "THP_TIME_TO_ACCURACY_THRESHOLDS": "1e-2,1e-3,8e-4,6e-4,4e-4,2e-4,1e-4",
+    "THP_GROUP1_FIXED_FS_CHECKPOINTS": "0,50,100",
+    "THP_FIXED_TIME_BUDGETS_SECONDS": "10,30,60,120,300,600,1200,1800,3600",
+    "THP_XLA_PREALLOCATE": "true",
+    "THP_XLA_MEM_FRACTION": "0.90",
+    "THP_VERIFY_MANUFACTURED": "1",
+    "THP_SAVE_PLOTS": "0",
+    "THP_RUN_NAME": "group1_gfs_distinct_seed12345_20260824_022014_full_eigh0",
+    "THP_GROUP1_METHOD": "full_eigh0"
+  }
+}

@@ -1,0 +1,10 @@
+\begin{tabular}{llcc}
+\hline
+Control & Configuration & Time (s) & $E_{\mathrm{common}}^{\max}$ \\
+\hline
+Streaming & FJ+LS, 0 $\to$ S+LS, 0 & 1613.3 $\to$ 1542.4 & $2.56 \times 10^{-4}$ $\to$ $3.26 \times 10^{-4}$ \\
+Solver & S+LS, 0 $\to$ S+EIGH, 0 & 1542.4 $\to$ 802.7 & $3.26 \times 10^{-4}$ $\to$ $5.64 \times 10^{-4}$ \\
+Damping & S+EIGH, 0 $\to$ S+EIGH, $10^{-7}$ & 802.7 $\to$ 800.5 & $5.64 \times 10^{-4}$ $\to$ $7.71 \times 10^{-5}$ \\
+Streamed, damped & FJ+EIGH, $10^{-7}$ $\to$ S+EIGH, $10^{-7}$ & 880.9 $\to$ 800.5 & $7.77 \times 10^{-5}$ $\to$ $7.71 \times 10^{-5}$ \\
+\hline
+\end{tabular}

@@ -1,0 +1,211 @@
+{
+  "method": "THP-GFS-ENGD-three-field-compressible",
+  "exact_case": "distinct",
+  "profiling": {
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "automatic_fp64_cutoff": true,
+    "refinement_steps": 2,
+    "gram_ridge": 1e-07,
+    "lstsq_rcond": null,
+    "line_search": "vectorized-logarithmic-grid",
+    "line_search_positive_levels": 31,
+    "line_search_implicit_zero_rejection": true,
+    "line_search_cached_frozen_terms": true,
+    "profile_rows": 2000,
+    "jacobian_backend": "pointwise",
+    "point_block_pt": 512,
+    "point_block_u": 512,
+    "fuse_gram_blocks": true,
+    "cache_line_search": true
+  },
+  "seed": 12345,
+  "physical_parameters": {
+    "E": 1.0,
+    "nu": 0.4999,
+    "lambda": 1666.4444296288254,
+    "mu": 0.3333555570371358,
+    "alpha": 0.1,
+    "beta": 0.1,
+    "a0": 0.2,
+    "b0": 0.1,
+    "c0": 0.2,
+    "K": 0.1,
+    "Theta": 0.1,
+    "t_final": 1.0
+  },
+  "loss_weighting": {
+    "objective_definition": "Each block approximates 0.5 * weight * integral(||residual||^2).",
+    "block_scale_definition": "sqrt(weight * measure / n_points)",
+    "weights": {
+      "u": {
+        "pde": 1.0,
+        "dirichlet": 1.0,
+        "neumann": 1.0,
+        "ic": 1.0
+      },
+      "pt": {
+        "pde": 1.0,
+        "dirichlet": 1.0,
+        "ic": 1.0
+      }
+    },
+    "residual_block_scales": {
+      "u": {
+        "pde": 0.015625,
+        "dirichlet": 0.049507377148833714,
+        "neumann": 0.049507377148833714,
+        "ic": 0.045454545454545456
+      },
+      "pt": {
+        "pde": 0.015625,
+        "dirichlet": 0.049507377148833714,
+        "ic": 0.045454545454545456
+      }
+    }
+  },
+  "gfs": {
+    "gamma": 0.00029997999999996697,
+    "S11": 2.99979999999967e-06,
+    "S12": 2.99979999999967e-06,
+    "S21": 2.99979999999967e-06,
+    "S22": 2.99979999999967e-06,
+    "iterations_requested": 50,
+    "iterations_completed": 50,
+    "adaptive_stop_enabled": false,
+    "adaptive_stop_min_iterations": 20,
+    "adaptive_stop_patience": 2,
+    "adaptive_stop_outer_tolerance": 1e-05,
+    "adaptive_stop_coupled_pt_tolerance": 1e-08,
+    "adaptive_stop_u_loss_tolerance": 1e-08,
+    "adaptive_stop_triggered": false,
+    "final_stop_counter": 0
+  },
+  "network": {
+    "u_sizes": [
+      3,
+      32,
+      32,
+      2
+    ],
+    "pt_sizes": [
+      3,
+      32,
+      32,
+      2
+    ]
+  },
+  "sampling": {
+    "fixed_uniform": true,
+    "grid_shape": {
+      "pde": [
+        16,
+        16,
+        16
+      ],
+      "ic": [
+        22,
+        22
+      ],
+      "boundary_per_side": [
+        24,
+        17
+      ],
+      "evaluation": [
+        40,
+        40,
+        40
+      ]
+    },
+    "pde_points": 4096,
+    "ic_points": 484,
+    "u_dirichlet_points": 816,
+    "u_neumann_points": 816,
+    "pt_dirichlet_points": 1632,
+    "evaluation_points": 64000
+  },
+  "engd_pt": {
+    "line_search_levels": 31,
+    "gram_ridge": 1e-07,
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "refinement_steps": 2,
+    "lstsq_rcond": null,
+    "jacobian_backend": "pointwise",
+    "gradient_tolerance": 1e-14,
+    "require_loss_decrease": true,
+    "steps_per_gfs_iteration": 20
+  },
+  "engd_u": {
+    "line_search_levels": 31,
+    "gram_ridge": 1e-07,
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "refinement_steps": 2,
+    "lstsq_rcond": null,
+    "jacobian_backend": "pointwise",
+    "gradient_tolerance": 1e-14,
+    "require_loss_decrease": true,
+    "steps_per_gfs_iteration": 20
+  },
+  "timing": {
+    "jit_warmup_seconds_excluded": 14.52020668797195,
+    "context_seconds": 1.0416876329109073,
+    "assembly_seconds": 194.28941636905074,
+    "solve_seconds": 98.60905791446567,
+    "line_search_seconds": 39.27006966806948,
+    "convergence_check_seconds": 2.127784655429423,
+    "evaluation_seconds_excluded": 4.620034943334758,
+    "reference_validation_seconds_excluded": 0.0,
+    "total_solver_wall_seconds": 341.9879215992987,
+    "optimizer_seconds": 333.2102315844968,
+    "effective_training_seconds": 335.3380162399262,
+    "effective_training_definition": "optimizer_seconds + convergence_check_seconds",
+    "jit_warmup_excluded": true,
+    "test_grid_evaluation_excluded": true,
+    "lstsq_reference_validation_excluded": true
+  },
+  "accuracy_reporting": {
+    "primary_metric": "E_common_max=max(u1_rel_l2,u2_rel_l2,p_rel_l2,T_rel_l2)",
+    "u_mean_metric": "0.5*(u1_rel_l2+u2_rel_l2)",
+    "pT_mean_metric": "0.5*(p_rel_l2+T_rel_l2)",
+    "time_to_accuracy_thresholds": [
+      0.01,
+      0.001,
+      0.0008,
+      0.0006,
+      0.0004,
+      0.0002
+    ],
+    "time_to_accuracy_patience_completed_sweeps": 3,
+    "fixed_budget_checkpoints": [
+      20,
+      30,
+      40,
+      50
+    ],
+    "time_to_accuracy_uses_effective_training_seconds": true,
+    "time_to_accuracy_is_discrete_at_fs_checkpoints": true
+  },
+  "memory": {
+    "process_peak_rss_bytes": 1775947776,
+    "device_platform": "gpu",
+    "device_kind": "NVIDIA GeForce RTX 3090",
+    "device_bytes_in_use": 2101760,
+    "device_peak_bytes_in_use": 881106688,
+    "device_bytes_limit": 22894312865
+  },
+  "runtime": {
+    "python": "3.10.10 (main, Mar 21 2023, 18:45:11) [GCC 11.2.0]",
+    "jax": "0.4.30",
+    "jax_backend": "gpu",
+    "jax_enable_x64": true,
+    "xla_python_client_preallocate": "true",
+    "xla_python_client_mem_fraction": "0.9"
+  },
+  "save_plots": false,
+  "fast_debug": false
+}

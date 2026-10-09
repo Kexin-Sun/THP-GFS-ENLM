@@ -1,0 +1,22 @@
+# Runtime caches and local environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
+
+# New experiments are separate from the committed frozen archive.
+/runs/
+/reports/
+/group*/runs/
+/group*/reports/
+
+# Do not commit duplicate distribution/source archives at the root.
+/*.zip
+/*.tar
+/*.tar.gz
+/*.tgz
+
+# Frozen group*/results/ and archive_summary/ must remain tracked.

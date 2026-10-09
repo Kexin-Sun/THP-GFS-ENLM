@@ -1,0 +1,125 @@
+{
+  "method": "THP-four-field-coupled-single-network-JS-ENGD",
+  "formulation": "four-field-monolithic-coupled",
+  "architecture": "single",
+  "field_order": [
+    "u1",
+    "u2",
+    "xi",
+    "p",
+    "T"
+  ],
+  "network_sizes": {
+    "all": [
+      3,
+      32,
+      32,
+      5
+    ]
+  },
+  "parameter_count": 1349,
+  "parameter_counts_dual": {
+    "uXi": 0,
+    "pT": 0
+  },
+  "seed": 56789,
+  "exact_case": "distinct",
+  "physics": {
+    "E": 1.0,
+    "nu": 0.3,
+    "lambda": 0.5769230769230769,
+    "mu": 0.3846153846153846,
+    "alpha": 0.1,
+    "beta": 0.1,
+    "a0": 0.2,
+    "b0": 0.1,
+    "c0": 0.2,
+    "K": 0.1,
+    "Theta": 0.1,
+    "T_final": 1.0
+  },
+  "budget": {
+    "rounds_requested": 50,
+    "rounds_completed": 50,
+    "engd_steps_per_round": 20,
+    "equivalent_iteration_definition": "round*engd_steps_per_round",
+    "termination_reason": "maximum_rounds"
+  },
+  "collocation": {
+    "N_xy_pde": 16,
+    "N_t_pde": 16,
+    "N_xy_ic": 22,
+    "N_side": 24,
+    "N_t_boundary": 17,
+    "N_xy_eval": 40,
+    "N_t_eval": 40
+  },
+  "optimizer": {
+    "line_search_levels": 31,
+    "gram_ridge": 1e-07,
+    "solver": "eigh-refined",
+    "compare_lstsq_reference": false,
+    "relative_cutoff": 0.0,
+    "refinement_steps": 2,
+    "lstsq_rcond": null,
+    "jacobian_backend": "pointwise",
+    "gradient_tolerance": 1e-14,
+    "require_loss_decrease": true,
+    "point_block_coupled": 128
+  },
+  "weights": {
+    "u": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "neumann": 1.0,
+      "ic": 1.0
+    },
+    "pT": {
+      "pde": 1.0,
+      "dirichlet": 1.0,
+      "ic": 1.0
+    }
+  },
+  "pt_residual_mode": "raw",
+  "timing": {
+    "jit_warmup_seconds_excluded": 9.992152973078191,
+    "context_seconds": 0.9859699606895447,
+    "assembly_seconds": 277.56591311469674,
+    "solve_seconds": 66.57331684790552,
+    "line_search_seconds": 34.974362081848085,
+    "convergence_check_seconds": 0.64005515165627,
+    "evaluation_seconds_excluded": 5.134762845002115,
+    "reference_validation_seconds_excluded": 0.0,
+    "total_solver_wall_seconds": 385.8171323314309,
+    "optimizer_seconds": 380.0995620051399,
+    "effective_training_seconds": 380.73961715679616
+  },
+  "memory": {
+    "process_peak_rss_bytes": 1777414144,
+    "device_platform": "gpu",
+    "device_kind": "NVIDIA GeForce RTX 3090",
+    "device_bytes_in_use": 2238464,
+    "device_peak_bytes_in_use": 1688285696,
+    "device_bytes_limit": 22894312865
+  },
+  "final_errors": {
+    "u_l2": 0.00018344204572653462,
+    "u_rel_l2": 0.00018976981765889795,
+    "u_h1": 0.0011013345631455552,
+    "u1_l2": 0.00010303419859091937,
+    "u1_rel_l2": 0.000150738660130187,
+    "u1_h1": 0.0008164432980884695,
+    "u2_l2": 0.00015177265254670552,
+    "u2_rel_l2": 0.00022204284210651488,
+    "u2_h1": 0.0007391604433311033,
+    "xi_l2": 0.0002549763076015098,
+    "xi_rel_l2": 0.00029471285304105493,
+    "xi_h1": 0.007626877410188003,
+    "p_l2": 7.25760318673692e-05,
+    "p_rel_l2": 0.00021451204989187807,
+    "p_h1": 0.0009237959294904166,
+    "T_l2": 8.395555425490248e-05,
+    "T_rel_l2": 0.00032618362735332935,
+    "T_h1": 0.0009782188897678027
+  }
+}

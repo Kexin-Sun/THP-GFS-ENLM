@@ -1,0 +1,14 @@
+# Keep executable sources portable across operating systems.
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+*.npz binary
+*.png binary
+*.pdf binary
+
+# Preserve every frozen file byte-for-byte, including original CRLF text.
+# This overrides the text rules above and core.autocrlf settings.
+group*/results/** -text

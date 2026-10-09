@@ -1,0 +1,11 @@
+comparison,stage,field,full_seconds,streamed_seconds,speedup_full_over_streamed,seconds_saved,streamed_fraction_of_full
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,GFS frozen-context construction,context_seconds,0.09195600356906652,1.7593537541106343,0.05226692093856413,-1.6673977505415678,19.132559983310006
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,residual evaluation (full-J only),residual_seconds,8.688087250106037,0.0,nan,8.688087250106037,0.0
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,full Jacobian / fused streamed Gram kernel,jacobian_seconds,128.01062195189297,487.03094944916666,0.2628387828261702,-359.0203274972737,3.8046135705222595
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,explicit J.T@J (full-J only),gram_matmul_seconds,408.7157001728192,0.0,nan,408.7157001728192,0.0
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,explicit J.T@r (full-J only),gradient_matmul_seconds,8.649655753746629,0.0,nan,8.649655753746629,0.0
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,total Gram/gradient assembly,assembly_seconds,561.720175777562,490.5579430665821,1.1450638680236827,71.16223271097988,0.873313732033083
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,same undamped lstsq solve,solve_seconds,961.55280795414,959.9289288204163,1.0016916660025228,1.6238791337236762,0.998311190898419
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,same 31-level line search,line_search_seconds,85.68853581976146,85.85964941885322,0.9980070545331834,-0.17111359909176826,1.001996925229901
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,all ENGD update wall time,wall_seconds,1610.854572369717,1539.932724719867,1.0460551597556,70.92184764984995,0.9559725323028277
+ENGD full-J+lstsq vs JS-ENGD streamed+lstsq,complete effective training,effective_training_seconds,1613.2876138770953,1542.3557136282325,1.0459893263415887,70.9319002488628,0.9560327001591505

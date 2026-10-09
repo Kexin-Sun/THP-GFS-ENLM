@@ -1,0 +1,47 @@
+{
+  "additional_effective_seconds": 441.21888293884695,
+  "metrics": {
+    "u1_rel_l2": {
+      "fs50": 0.00011981450838045823,
+      "fs100": 0.0001198149897338255,
+      "improvement_factor_fs50_over_fs100": 0.999995982527993,
+      "relative_reduction": -4.017488147045611e-06
+    },
+    "u2_rel_l2": {
+      "fs50": 0.00012949179267816573,
+      "fs100": 0.00012949160730263225,
+      "improvement_factor_fs50_over_fs100": 1.0000014315640784,
+      "relative_reduction": 1.4315620290306086e-06
+    },
+    "xi_rel_l2": {
+      "fs50": 0.0004075604690072874,
+      "fs100": 0.000407560230446683,
+      "improvement_factor_fs50_over_fs100": 1.0000005853382803,
+      "relative_reduction": 5.85337937564212e-07
+    },
+    "p_rel_l2": {
+      "fs50": 0.00042743649331733875,
+      "fs100": 0.00042740073627310713,
+      "improvement_factor_fs50_over_fs100": 1.0000836616346136,
+      "relative_reduction": 8.365463592996392e-05
+    },
+    "T_rel_l2": {
+      "fs50": 0.0007582973962776365,
+      "fs100": 0.000758256868316227,
+      "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+      "relative_reduction": 5.3445998375312165e-05
+    },
+    "E_common_max": {
+      "fs50": 0.0007582973962776365,
+      "fs100": 0.000758256868316227,
+      "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+      "relative_reduction": 5.3445998375312165e-05
+    },
+    "E_4F_max": {
+      "fs50": 0.0007582973962776365,
+      "fs100": 0.000758256868316227,
+      "improvement_factor_fs50_over_fs100": 1.0000534488550028,
+      "relative_reduction": 5.3445998375312165e-05
+    }
+  }
+}

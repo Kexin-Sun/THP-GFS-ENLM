@@ -1,0 +1,3 @@
+# Offline figures and tables only; JAX is not required.
+numpy
+matplotlib

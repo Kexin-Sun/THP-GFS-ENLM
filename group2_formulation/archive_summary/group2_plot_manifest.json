@@ -1,0 +1,59 @@
+{
+  "results_root": "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results",
+  "batch_tag": "multiseed_v1",
+  "paired_seeds": [
+    12345,
+    23456,
+    34567,
+    45678,
+    56789
+  ],
+  "selected_runs": {
+    "coupled_single": [
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed12345_coupled_single",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed23456_coupled_single",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed34567_coupled_single",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed45678_coupled_single",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed56789_coupled_single"
+    ],
+    "coupled_dual": [
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed12345_coupled_dual",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed23456_coupled_dual",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed34567_coupled_dual",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed45678_coupled_dual",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed56789_coupled_dual"
+    ],
+    "gfs_three_field": [
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed12345_gfs_three_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed23456_gfs_three_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed34567_gfs_three_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed45678_gfs_three_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed56789_gfs_three_field"
+    ],
+    "gfs_four_field": [
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed12345_gfs_four_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed23456_gfs_four_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed34567_gfs_four_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed45678_gfs_four_field",
+      "/workspace/scratch/909952746727/output/THP-GFS-ENLM-full/THP-GFS-ENLM/group2_formulation/results/group2_multiseed_v1_seed56789_gfs_four_field"
+    ]
+  },
+  "curve_aggregation": "geometric mean with +/- one sample standard deviation in log10(error); time curves aligned by log-error interpolation over the common effective-time interval",
+  "curve_band_limits": "10**(mean(log10(values)) +/- sample_std(log10(values)))",
+  "bar_aggregation": "arithmetic mean +/- one sample standard deviation",
+  "equivalent_iteration": "coupled round*20; GFS outer iteration*20",
+  "time_metric": "effective training seconds; JIT/evaluation excluded",
+  "tta_metric": "E_common_max",
+  "tta_thresholds": [
+    0.01,
+    0.001,
+    0.0008,
+    0.0006,
+    0.0004,
+    0.0002
+  ],
+  "tta_patience": 3,
+  "tta_partial_reach_rule": "mean/std are conditional on reached seeds; n_reached/n_seeds is always reported",
+  "memory_metric": "device_peak_bytes_in_use and process_peak_rss_bytes converted to GiB",
+  "outer_convergence_metric": "coupled prediction_change; GFS max(u_outer_change, pt_outer_change), with both GFS components also reported"
+}
